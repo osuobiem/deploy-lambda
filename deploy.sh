@@ -1,9 +1,12 @@
+# Read function name from user input
 echo Enter function name:;
 read funcName;
 
+# Check if function zip has been created
 if test -f bin/$funcName.zip;
 then 
 
+  # Check if function already exists
   aws lambda get-function --function-name $funcName > /dev/null 2>&1
   if [ 0 == $? ];
   then
